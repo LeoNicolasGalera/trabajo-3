@@ -17,6 +17,18 @@ botonVaciar.addEventListener("click", () => {
   carrito.length = 0;
   actualizarCarrito();
   localStorage.removeItem("carrito");
+  Swal.fire({
+    title: "Esta seguro?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si,borrar todo!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire("Deleted!", "Your file has been deleted.", "success");
+    }
+  });
 });
 usuarios.forEach((producto) => {
   let tarjetacompra = document.createElement("div");
